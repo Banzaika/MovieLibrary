@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заголовок страницы</title>
+  </head>
+  <body>
+    {% for movie in movie_list %}
+        <div>
+            <img src="{{ movie.poster }}" alt="{{ movie.name }}">
+            <h1>movie.title</h1>
+            <p>{{movie.tagline}}</p>
+            <p>{{movie.description}}</p>
+            <p>{{movie.year}}</p>
+            <p>{{movie.country}}</p>
+        </div>
+    {% endfor %}
+
+  </body>
+</html>
