@@ -8903,6 +8903,11 @@ a.text-dark:hover, a.text-dark:focus {
   visibility: visible !important;
 }
 
+.img-movie-shots {
+  max-width: 250px;
+  max-height: auto;
+}
+
 .invisible {
   visibility: hidden !important;
 }
@@ -8931,10 +8936,12 @@ a.text-dark:hover, a.text-dark:focus {
   thead {
     display: table-header-group;
   }
-  tr,
+  tr
   img {
     page-break-inside: avoid;
   }
+
+
   p,
   h2,
   h3 {

@@ -1,21 +1,50 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заголовок страницы</title>
-  </head>
-  <body>
-    {% for movie in movie_list %}
-        <div>
-            <img src="{{ movie.poster }}" alt="{{ movie.name }}">
-            <h1>movie.title</h1>
-            <p>{{movie.tagline}}</p>
-            <p>{{movie.description}}</p>
-            <p>{{movie.year}}</p>
-            <p>{{movie.country}}</p>
-        </div>
-    {% endfor %}
+{% extends 'movies/base.html' %}
+{% block title %} {% endblock title %}
+{% block header %}bg1{% endblock header %}
+{% block movie %}
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+            {% for movie in movie_list %}
+                <div class="col-md-4 product-men">
+                    <div class="product-shoe-info editContent text-center mt-lg-4">
+                        <div class="men-thumb-item">
+                            <img src="{{ movie.poster.url }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="item-info-product">
+                            <h4 class="">
+                                <a href="{{ movie.get_absolute_url }}"
+                                   class="editContent">
+                                    {{ movie.title }}
+                                </a>
+                            </h4>
 
-  </body>
-</html>
+                            <div class="product_price">
+                                <div class="grid-price">
+                                    <span class="money editContent">{{ movie.tagline }}</span>
+                                </div>
+                            </div>
+                            <ul class="stars">
+                                <li><a href="#"><span class="fa fa-star"
+                                                      aria-hidden="true"></span></a>
+                                </li>
+                                <li><a href="#"><span class="fa fa-star"
+                                                      aria-hidden="true"></span></a>
+                                </li>
+                                <li><a href="#"><span class="fa fa-star-half-o"
+                                                      aria-hidden="true"></span></a>
+                                </li>
+                                <li><a href="#"><span class="fa fa-star-half-o"
+                                                      aria-hidden="true"></span></a>
+                                </li>
+                                <li><a href="#"><span class="fa fa-star-o"
+                                                      aria-hidden="true"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock movie %}
+

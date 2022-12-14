@@ -1,6 +1,10 @@
 from django.urls import path
-from. import views
+from .views import *
+
+app_name = 'movies'
 
 urlpatterns = [
-    path('', views.MoviesView.as_view(), name="simple_view"),
+    path('', MoviesView.as_view(), name="movie_list"),
+    path('<slug:slug>/', MovieDetailView.as_view(), name='movie_detail'),
+    path('review/<int:pk>', AddReview.as_view(), name="add_review")
 ]
