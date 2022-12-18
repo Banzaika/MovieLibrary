@@ -62,7 +62,7 @@ class Movie(Model):
     budget = PositiveIntegerField(
         "Бюджет", default=0, help_text="указывать сумму в долларах")
     fees_in_usa = PositiveIntegerField(
-        "Сборы в США", default=0, help_text="указывать сумму в долларах")
+        "Сборы в NoneСША", default=0, help_text="указывать сумму в долларах")
     fees_in_world = PositiveIntegerField(
         "Сборы в мире", default=0, help_text="указывать сумму в долларах")
     category = ForeignKey(Category, verbose_name="Категория",
@@ -72,6 +72,9 @@ class Movie(Model):
 
     def __str__(self):
         return self.title
+
+    def get_parent_reviews(self):
+        return self.reviews_set.filter(parent__isnull = True)
 
     def get_absolute_url(self):
         return reverse('movies:movie_detail', kwargs={"slug": self.url})
