@@ -4,6 +4,9 @@
 {% block movie %}
     <div class="left-ads-display col-lg-9">
         <div class="row">
+            {% if movie_list.count == 0 %}
+                <h4>Пожалуйста, выберите год выпуска и жанр фильма в фильтре.</h4>
+            {% endif %}
             {% for movie in movie_list %}
             <a href="{{ movie.get_absolute_url }}" class="editContent">
                 <div class="col-md-4 product-men">
