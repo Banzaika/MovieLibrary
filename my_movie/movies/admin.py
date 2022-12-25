@@ -132,7 +132,7 @@ class RatingStarAdmin(ModelAdmin):
 
 @admin.register(Rating)
 class RatingAdmin(ModelAdmin):
-    list_display = ("ip", "movie")
+    list_display = ("ip", "movie", "star")
 
 
 #Banner Naming
