@@ -1,10 +1,10 @@
 # MovieLibrary
-<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"><img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white">
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"><img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"><img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white">
 
 Проект был сделан в качестве самообучающегося упражнения.
 
 Технологии
-Приложение на Django подключается к локальной базе данных Postgresql через библиотеку psycopg2-binary. На сайте также есть 
+Приложение на Django подключается к локальной базе данных Postgresql через библиотеку psycopg2-binary. На сайте также есть капча от гугла при комментировании фильма. Описание фильма при создании редактируется с рекдактором текста Ckeditor.
 
 ![alt text](https://github.com/Banzaika/MovieLibrary/blob/main/my_movie/site%20overview/movies%20list.png?raw=true)
 
