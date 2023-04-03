@@ -66,6 +66,14 @@ WSGI_APPLICATION = 'my_movie.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'banzai.sql',
+#         'ATOMIC_REQUESTS': True,
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -74,9 +82,9 @@ DATABASES = {
         'PASSWORD': config("PS_DB_PASS"),
         'HOST': config("PS_HOST"),
         'PORT': config("PS_PORT"),
+        'ATOMIC_REQUESTS': True,
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
