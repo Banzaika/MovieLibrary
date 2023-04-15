@@ -37,7 +37,7 @@ class CategoryAdmin(ModelAdmin):
 
 @admin.register(Movie)
 class MovieAdmin(ModelAdmin):
-    list_display = ("id", "category", "title", "url", "draft")
+    list_display = ("id", "category", "title", "url", "draft", 'get_image', 'poster')
     list_display_links = ("title", )
     list_filter = ("category", "year")
     search_fields = ("title", "category__name", "url")
@@ -53,7 +53,7 @@ class MovieAdmin(ModelAdmin):
             "fields": (("title", "tagline"), )
             }),
         (None, { 
-            "fields": (("description", "get_image"  ), )
+            "fields": (("description", "get_image", 'poster' ), )
             }),
         (None, { 
             "fields": (("year", "country"), )

@@ -27,9 +27,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'ckeditor',
     'ckeditor_uploader',
     'movies.apps.MoviesConfig',
+    'contact',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.vk',
+
+    #celery & redis
+    'django_celery_results',
+    'django_celery_beat',
+
+
 ]
 
 MIDDLEWARE = [
@@ -47,7 +60,7 @@ ROOT_URLCONF = 'my_movie.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,7 +78,7 @@ WSGI_APPLICATION = 'my_movie.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -73,7 +86,7 @@ WSGI_APPLICATION = 'my_movie.wsgi.application'
 #         'ATOMIC_REQUESTS': True,
 #     }
 # }
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -104,6 +117,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -200,3 +217,29 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_REDIRECT_URL = '/'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
+#caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'celery_cache',
+    }
+}
+
+# REDIS & CELERY
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

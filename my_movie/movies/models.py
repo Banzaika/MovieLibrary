@@ -61,7 +61,7 @@ class Movie(Model):
         Actor, verbose_name='Актеры', related_name='film_actor')
     genres = ManyToManyField(Genre, verbose_name='Жанры')
     world_premiere = PositiveIntegerField(
-        "Премьера в мире", default=date.today())
+        "Премьера в мире", default=2019)
     budget = PositiveIntegerField(
         "Бюджет", default=0, help_text="указывать сумму в долларах")
     fees_in_usa = PositiveIntegerField(
